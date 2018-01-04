@@ -1,3 +1,8 @@
+[![Travis Build Status](http://img.shields.io/travis/abrom/nz-whois.svg?style=flat)](https://travis-ci.org/abrom/nz-whois)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a9fbbd2801b9c475914d/maintainability)](https://codeclimate.com/github/abrom/nz-whois/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a9fbbd2801b9c475914d/test_coverage)](https://codeclimate.com/github/abrom/nz-whois/test_coverage)
+[![Gem Version](http://img.shields.io/gem/v/nz-whois.svg?style=flat)](#)
+
 # New Zealand whois scraper
 
 Since the NZ DNC block port 43 whois, instead we need to scrape their website :/
