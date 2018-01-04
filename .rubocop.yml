@@ -1,3 +1,7 @@
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+
 Naming/FileName:
   Exclude:
     - "lib/nz-whois.rb"

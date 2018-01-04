@@ -12,7 +12,7 @@ module NZWhois
 
     def valid_whois?
       return @valid_whois if defined? @valid_whois
-      @valid_whois = !whois_content.nil?
+      @valid_whois = !whois_content.empty? && !request_denied?
     end
 
     def status
@@ -40,18 +40,22 @@ module NZWhois
     end
 
     def registrar
+      return unless valid_whois?
       Contact.new self, 'Registrar'
     end
 
     def registrant_contact
+      return unless valid_whois?
       Contact.new self, 'Registrant Contact'
     end
 
     def admin_contact
+      return unless valid_whois?
       Contact.new self, 'Admin Contact'
     end
 
     def technical_contact
+      return unless valid_whois?
       Contact.new self, 'Technical Contact'
     end
 
@@ -73,8 +77,12 @@ module NZWhois
       @whois_content ||= page.xpath("//*[@id='block-dnc-content']")
     end
 
+    def request_denied?
+      page.css('.page-title').text.include? '(Request Denied)'
+    end
+
     def contents_for(description)
-      return unless valid_whois?
+      return [] unless valid_whois?
 
       whois_content.xpath("//td/*[text() = '#{description}']").map do |element|
         element.ancestors('td').first.next_element.text

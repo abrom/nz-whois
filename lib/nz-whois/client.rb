@@ -22,7 +22,7 @@ module NZWhois
     # @return Client instance (`self`)
     #
     def whois(domain)
-      raise InvalidDomainError unless domain.to_s.gsub(/\.nz\z/)
+      raise InvalidDomainError unless domain.to_s =~ /\.nz\z/i
       fetch_content domain
       self
     end
@@ -56,6 +56,8 @@ module NZWhois
         @status = f.status.first
         @content = f.read
       end
+    rescue OpenURI::HTTPError => e
+      @status = e.message.strip
     end
 
     def parser
