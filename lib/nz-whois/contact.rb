@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module NZWhois
   #
   # User contact for WHOIS response

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'nokogiri'
 require 'date'
 
@@ -12,6 +14,7 @@ module NZWhois
 
     def valid_whois?
       return @valid_whois if defined? @valid_whois
+
       @valid_whois = !whois_content.empty? && !request_denied?
     end
 
@@ -41,21 +44,25 @@ module NZWhois
 
     def registrar
       return unless valid_whois?
+
       Contact.new self, 'Registrar'
     end
 
     def registrant_contact
       return unless valid_whois?
+
       Contact.new self, 'Registrant Contact'
     end
 
     def admin_contact
       return unless valid_whois?
+
       Contact.new self, 'Admin Contact'
     end
 
     def technical_contact
       return unless valid_whois?
+
       Contact.new self, 'Technical Contact'
     end
 

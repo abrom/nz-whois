@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'open-uri'
 
 module NZWhois
@@ -23,6 +25,7 @@ module NZWhois
     #
     def whois(domain)
       raise InvalidDomainError unless domain.to_s =~ /\.nz\z/i
+
       fetch_content domain
       self
     end

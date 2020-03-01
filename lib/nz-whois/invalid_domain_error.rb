@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module NZWhois
   #
   # Invalid domain error used when a non `.nz` domain requested

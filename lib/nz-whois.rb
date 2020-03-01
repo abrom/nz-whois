@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'nz-whois/gem_version'
 
 require 'nz-whois/client'
